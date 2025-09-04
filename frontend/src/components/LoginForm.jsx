@@ -16,7 +16,7 @@ function LoginForm() {
     // --- Client-side validation for demonstration ---
     // In a real app, you'd send these credentials to your backend
     // and the backend would authenticate and return a token/success status.
-    if (username === 'user' && password === 'password') {
+    if (username === 'Omkar1652' && password === 'ms2025') {
       login(); // Update auth context
       navigate('/dashboard'); // Redirect to dashboard
     } else {

@@ -65,6 +65,26 @@ app.delete('/api/data/:id', (req, res) => {
   }
 });
 
+// PUT to update a data entry's status by ID
+app.put('/api/data/:id', (req, res) => {
+  try {
+    const data = readData();
+    const entryId = parseInt(req.params.id);
+    const updatedStatus = req.body.status;
+    const entryIndex = data.findIndex(entry => entry.id === entryId);
+
+    if (entryIndex !== -1) {
+      data[entryIndex].status = updatedStatus;
+      writeData(data);
+      res.status(200).json(data[entryIndex]);
+    } else {
+      res.status(404).send({ message: 'Entry not found' });
+    }
+  } catch (error) {
+    res.status(500).send('Error updating entry');
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Backend server listening at http://localhost:${PORT}`);
 });

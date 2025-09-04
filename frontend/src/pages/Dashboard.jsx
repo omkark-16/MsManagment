@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Table from '../components/Table';
-import { AuthContext } from '../App'; // Import AuthContext for logout
+import { AuthContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'https://data-dashboard-api.onrender.com/api/data';
+const API_URL = 'http://localhost:5000/api/data';
 
 function Dashboard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { logout } = useContext(AuthContext); // Get logout from context
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,15 +27,17 @@ function Dashboard() {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this entry?')) {
-      try {
-        await axios.delete(`${API_URL}/${id}`);
-        setData(data.filter(item => item.id !== id));
-        alert('Entry deleted successfully!');
-      } catch (err) {
-        alert('Failed to delete entry. Please try again.');
-      }
+  const handleStatusChange = async (id, currentStatus) => {
+    const newStatus = currentStatus === 'pending' ? 'done' : 'pending';
+    try {
+      await axios.put(`${API_URL}/${id}`, { status: newStatus });
+      setData(prevData =>
+        prevData.map(item =>
+          item.id === id ? { ...item, status: newStatus } : item
+        )
+      );
+    } catch (err) {
+      alert('Failed to update status. Please try again.');
     }
   };
 
@@ -60,10 +62,10 @@ function Dashboard() {
       </header>
 
       <main className="dashboard-content">
-        <Table title="High" data={highPriorityData} handleDelete={handleDelete} />
-        <Table title="Medium" data={mediumPriorityData} handleDelete={handleDelete} />
-        <Table title="Low" data={lowPriorityData} handleDelete={handleDelete} />
-        <Table title="Below" data={belowPriorityData} handleDelete={handleDelete} />
+        <Table title="High" data={highPriorityData} handleStatusChange={handleStatusChange} />
+        <Table title="Medium" data={mediumPriorityData} handleStatusChange={handleStatusChange} />
+        <Table title="Low" data={lowPriorityData} handleStatusChange={handleStatusChange} />
+        <Table title="Below" data={belowPriorityData} handleStatusChange={handleStatusChange} />
       </main>
     </div>
   );

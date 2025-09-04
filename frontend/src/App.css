@@ -1,269 +1,387 @@
-/* General Styles */
+/* --- General & Layout --- */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
 .App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2, h3 {
-  color: #2c3e50;
-  text-align: center;
-  margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
-/* Dashboard Header */
+/* --- Dashboard Header & Logout --- */
 .dashboard-header {
-  background-color: #ffffff;
-  padding: 20px 30px;
-  border-bottom: 1px solid #e0e0e0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
+    background: linear-gradient(135deg, #1f2a3a, #334455);
+    padding: 20px 40px;
+    color: #ffffff;
+    border-bottom: 3px solid #66b5ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .dashboard-header h1 {
-  margin: 0;
-  font-size: 1.8em;
-  color: #34495e;
+    margin: 0;
+    font-size: 2em;
+    color: #ffffff;
 }
 
-/* Logout Button */
 .logout-btn {
-  background-color: #e74c3c;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9em;
-  transition: background-color 0.3s ease;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: transform 0.2s, background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logout-btn:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
+    transform: translateY(-2px);
 }
 
-/* Dashboard Content */
+/* --- Dashboard Content & Tables --- */
 .dashboard-content {
-  flex-grow: 1;
-  padding: 20px;
-  max-width: 1300px;
-  margin: 0 auto;
-  width: 100%;
+    flex-grow: 1;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
 }
 
-/* Table Container */
 .table-container {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin-bottom: 40px;
-  overflow-x: auto; /* For responsive tables */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.table-container:hover {
+    transform: translateY(-5px);
 }
 
 .table-container h3 {
-  font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 25px;
-  color: #34495e;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 10px;
-  display: inline-block; /* To make border-bottom only under text */
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #34495e;
+    position: relative;
+    padding-bottom: 10px;
 }
 
-/* Table Styling */
-.table-wrapper {
-  max-width: 100%;
-  overflow-x: auto;
+.table-container h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #3498db;
+    border-radius: 2px;
 }
 
+/* --- Table Styling --- */
 table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  min-width: 800px; /* Ensure table is not too narrow */
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 400px;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 th, td {
-  border: 1px solid #ecf0f1;
-  padding: 15px;
-  text-align: left;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 15px;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 0.9em;
 }
 
 th {
-  background-color: #3498db;
-  color: white;
-  font-weight: 600;
-  white-space: nowrap; /* Prevent headers from wrapping */
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-tr:nth-child(even) {
-  background-color: #fcfdfe;
+tr:last-child td {
+    border-bottom: none;
 }
 
 tr:hover {
-  background-color: #eaf6fd;
+    background-color: #eaf6fd;
+    transform: scale(1.01);
+    transition: transform 0.2s;
 }
 
-/* Delete Button */
+/* ADD THIS NEW RULE */
+tr.done {
+    background-color: #d6f5d6; /* A light green background */
+    opacity: 0.7;
+    text-decoration: line-through;
+}
+
+tr.done:hover {
+    background-color: #c9e8c9;
+}
+
+/* --- Delete Button --- */
 .delete-btn {
-  background-color: #dc3545;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85em;
-  transition: background-color 0.3s ease;
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: transform 0.2s, background-color 0.3s;
 }
 
 .delete-btn:hover {
-  background-color: #c82333;
+    background-color: #c0392b;
+    transform: scale(1.05);
 }
 
-/* Login Page Styling */
+/* --- Login Page --- */
 .login-page-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #eef2f5;
 }
 
 .login-form {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
 }
 
 .login-form h2 {
-  margin-bottom: 30px;
-  color: #333;
-  font-size: 1.8em;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2em;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.login-form h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 5px;
+    background-color: #3498db;
+    border-radius: 2px;
 }
 
 .form-group {
-  margin-bottom: 20px;
-  text-align: left;
+    margin-bottom: 25px;
+    text-align: left;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #555;
 }
 
-.form-group input[type="text"],
-.form-group input[type="password"] {
-  width: calc(100% - 22px); /* Account for padding */
-  padding: 12px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1em;
-  transition: border-color 0.3s ease;
+.form-group input {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="password"]:focus {
-  border-color: #3498db;
-  outline: none;
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
 .login-button {
-  background-color: #3498db;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1em;
-  font-weight: bold;
-  width: 100%;
-  transition: background-color 0.3s ease;
+    background-color: #3498db;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    width: 100%;
+    transition: transform 0.2s, background-color 0.3s;
 }
 
 .login-button:hover {
-  background-color: #2980b9;
+    background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
 .error-message {
-  color: #e74c3c;
-  margin-top: -10px;
-  margin-bottom: 15px;
-  font-size: 0.9em;
-  background-color: #fef1f1;
-  border: 1px solid #e74c3c;
-  padding: 10px;
-  border-radius: 5px;
+    color: #e74c3c;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    background-color: #fef1f1;
+    border: 1px solid #e74c3c;
+    padding: 12px;
+    border-radius: 8px;
 }
 
 .hint-text {
-  margin-top: 20px;
-  color: #777;
-  font-size: 0.9em;
+    margin-top: 25px;
+    color: #777;
+    font-size: 0.9em;
 }
 
-/* Loading Spinner */
+/* --- Loading Spinner & Error Message --- */
 .loading-spinner,
 .error-message {
-  text-align: center;
-  padding: 50px;
-  font-size: 1.2em;
-}
-.loading-spinner::before {
-  content: "Loading data...";
-  display: block;
-  margin-bottom: 10px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .dashboard-header {
-    flex-direction: column;
-    gap: 15px;
     text-align: center;
-  }
-  .dashboard-header h1 {
-    font-size: 1.5em;
-  }
-  th, td {
-    padding: 10px;
-  }
-  .table-container {
-    padding: 15px;
-  }
+    padding: 50px;
+    font-size: 1.2em;
 }
 
+.loading-spinner::before {
+    content: "Loading data...";
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN (Media Queries)
+   ===================================== */
+
+/* For screens smaller than 1200px (e.g., tablets) */
+@media (max-width: 1200px) {
+    .dashboard-content {
+        padding: 30px 15px;
+        gap: 20px;
+    }
+    .table-container {
+        padding: 20px;
+    }
+    th, td {
+        padding: 12px;
+    }
+    .table-container h3 {
+        font-size: 1.5em;
+    }
+    .login-form {
+        padding: 40px;
+    }
+}
+
+/* For screens smaller than 768px (e.g., small tablets and large phones) */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 20px;
+    }
+    .dashboard-header h1 {
+        font-size: 1.6em;
+    }
+    .logout-btn {
+        padding: 8px 20px;
+    }
+    .dashboard-content {
+        grid-template-columns: 1fr; /* Stack tables vertically on smaller screens */
+        padding: 20px 10px;
+    }
+    .table-container {
+        padding: 15px;
+    }
+    th, td {
+        padding: 10px;
+        font-size: 0.85em;
+    }
+    .table-container h3 {
+        font-size: 1.4em;
+    }
+    .login-form {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .login-form h2 {
+        font-size: 1.8em;
+    }
+    .form-group label {
+        font-size: 0.9em;
+    }
+    .form-group input {
+        font-size: 0.9em;
+    }
+    .login-button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+/* For screens smaller than 480px (e.g., most mobile phones) */
 @media (max-width: 480px) {
-  .login-form {
-    padding: 25px;
-    margin: 0 15px;
-  }
-  .login-form h2 {
-    font-size: 1.5em;
-  }
-  .dashboard-content {
-    padding: 10px;
-  }
-  .delete-btn {
-    padding: 6px 10px;
-    font-size: 0.8em;
-  }
+    body {
+        font-size: 14px;
+    }
+    .dashboard-header h1 {
+        font-size: 1.4em;
+    }
+    .logout-btn {
+        font-size: 0.8em;
+    }
+    th, td {
+        white-space: normal; /* Allow table cell content to wrap */
+        word-break: break-word;
+    }
+    .table-container h3 {
+        font-size: 1.2em;
+    }
+    .table-container {
+        padding: 10px;
+    }
+    .delete-btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+    .login-form {
+        padding: 20px;
+    }
 }

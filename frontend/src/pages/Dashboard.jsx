@@ -4,7 +4,7 @@ import Table from '../components/Table';
 import { AuthContext } from '../App'; // Import AuthContext for logout
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'http://localhost:5000/api/data';
+const API_URL = 'https://data-dashboard-api.onrender.com/api/data';
 
 function Dashboard() {
   const [data, setData] = useState([]);

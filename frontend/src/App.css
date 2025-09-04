@@ -1,0 +1,269 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #34495e;
+}
+
+/* Logout Button */
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Table Container */
+.table-container {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+  overflow-x: auto; /* For responsive tables */
+}
+
+.table-container h3 {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #34495e;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  display: inline-block; /* To make border-bottom only under text */
+}
+
+/* Table Styling */
+.table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 800px; /* Ensure table is not too narrow */
+}
+
+th, td {
+  border: 1px solid #ecf0f1;
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  white-space: nowrap; /* Prevent headers from wrapping */
+}
+
+tr:nth-child(even) {
+  background-color: #fcfdfe;
+}
+
+tr:hover {
+  background-color: #eaf6fd;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Login Page Styling */
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+}
+
+.login-form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 1.8em;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: calc(100% - 22px); /* Account for padding */
+  padding: 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.login-button {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #2980b9;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  background-color: #fef1f1;
+  border: 1px solid #e74c3c;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.hint-text {
+  margin-top: 20px;
+  color: #777;
+  font-size: 0.9em;
+}
+
+/* Loading Spinner */
+.loading-spinner,
+.error-message {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2em;
+}
+.loading-spinner::before {
+  content: "Loading data...";
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  .dashboard-header h1 {
+    font-size: 1.5em;
+  }
+  th, td {
+    padding: 10px;
+  }
+  .table-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 25px;
+    margin: 0 15px;
+  }
+  .login-form h2 {
+    font-size: 1.5em;
+  }
+  .dashboard-content {
+    padding: 10px;
+  }
+  .delete-btn {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+}
